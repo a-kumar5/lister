@@ -26,6 +26,13 @@ func main() {
 		// handle error
 	}
 	for _, pod := range pods.Items {
-		fmt.Printf("%+v", pod.Name)
+		fmt.Printf("%+v\n", pod.Name)
+	}
+	hpa, err := clientset.AutoscalingV2().HorizontalPodAutoscalers("default").List(ctx, metav1.ListOptions{})
+	if err != nil {
+		// handle error
+	}
+	for _, hpa := range hpa.Items {
+		fmt.Printf("%+v\n", hpa.Name)
 	}
 }
